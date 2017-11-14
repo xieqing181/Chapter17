@@ -24,10 +24,14 @@ print("Repositories returned: ", len(repo_dicts))
 names, plot_dicts = [], []
 for repo_dict in repo_dicts:
     names.append(repo_dict['name'])
-    #if repo_dict['id'] == 1362490:	
+    
+    description = repo_dict['description']
+    if not description:	
+        description = "No description provided."
+        
     plot_dict = {
         'value': repo_dict['stargazers_count'],
-        'label': repo_dict['description'],
+        'label': description,
         'xlink': repo_dict['html_url'],
         }
     plot_dicts.append(plot_dict)
